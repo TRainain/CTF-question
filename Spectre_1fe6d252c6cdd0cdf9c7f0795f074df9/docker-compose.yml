@@ -1,0 +1,12 @@
+version: "3.7"
+name: spectre
+
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./config.mjs:/app/config.mjs
+    environment:
+      - FLAG=${FLAG}
+
