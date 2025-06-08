@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px; /* Fixed width for styling */
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 80%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+    <title>欢迎页面</title>
+</head>
+<body>
+    <main>
+        {% if logged_in %}
+            <div class="container">
+                <h2>你好, {{ username }}!</h2>
+                <p>你的余额: {{ money }} 元</p>
+                <form action="/buy_flag">
+                    <button type="submit">购买flag</button>
+                </form>
+                <button onclick="document.getElementById('transfer-modal').style.display='block'">转账</button>
+                <a href="/logout">登出</a>
+            </div>
+
+            <!-- 转账模态框 -->
+            <div id="transfer-modal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); padding:20px; background:white; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+                <h2>转账</h2>
+                <form action="/transfer" method="post">
+                    <input type="text" name="receiver" placeholder="接收者用户名" required>
+                    <input type="number" name="amount" placeholder="转账金额" required>
+                    <button type="submit">确认转账</button>
+                </form>
+                <button onclick="document.getElementById('transfer-modal').style.display='none'">关闭</button>
+            </div>
+        {% else %}
+            <div class="container">
+                <h2>欢迎访问！</h2>
+                <p>请登录以查看你的资料。</p>
+                <h2>登录</h2>
+                <form action="/login" method="post">
+                    <input type="text" name="username" placeholder="用户名" required>
+                    <input type="password" name="password" placeholder="密码" required>
+                    <button type="submit">登录</button>
+                </form>
+                <a href="/">返回首页</a>
+            </div>
+        {% endif %}
+    </main>
+
+    <script>
+        // 这里可以添加一些 JavaScript 使模态框更好用，以下代码是简单的展示和隐藏模态框
+        function showTransferModal() {
+            document.getElementById('transfer-modal').style.display = 'block';
+        }
+        function hideTransferModal() {
+            document.getElementById('transfer-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

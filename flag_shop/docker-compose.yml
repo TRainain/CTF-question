@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  challenges:
+    build: .
+    image: qsnctf/base_web_python310
+    ports:
+      - "5555:80"
+    environment:
+      - FLAG=wllmctf{e87b789b-a268-48a7-be38-5a408f163c9c}

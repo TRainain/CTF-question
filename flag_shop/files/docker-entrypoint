@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -f /flag.sh ]; then
+    source /flag.sh
+fi
+
+if [ -f /app/requirements.txt ]; then
+    pip install -r /app/requirements.txt -i https://mirror.nju.edu.cn/pypi/web/simple/ && rm -f /app/requirements.txt
+fi
+
+echo "Running..."
+
+gunicorn --chdir="/app" -w 2 -k gevent -b 0.0.0.0:80 --access-logfile - app:app
