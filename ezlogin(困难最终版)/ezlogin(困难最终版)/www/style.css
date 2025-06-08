@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background: linear-gradient(127deg, #64c4ed, #fec771);
+    height: 100vh;
+  
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei",
+      "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+  }
+  
+  #login-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    color: white;
+  
+    padding: 3vh 3vw;
+  
+    background-color: #8b4367;
+    opacity: .8;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px #8b4367;
+  }
+  
+  #login-div #form-title-p {
+    font-weight: 500;
+    font-size: 2rem;
+    padding: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5rem;
+  }
+  
+  .input-div {
+    position: relative;
+    padding: 5px;
+    margin-bottom: 2vh;
+  }
+  
+  .input-div,
+  .btn-div {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .input-div input {
+    width: 15vw;
+    height: 5vh;
+    padding: 0 1rem;
+  
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+  
+    font-size: 14px;
+  }
+  
+  .input-div label {
+    position: absolute;
+    left: 1rem;
+    top: .5rem;
+    font-size: 16px;
+    transition: 0.2s;
+  }
+  
+  .input-div input:focus ~ label,
+  .input-div input:valid ~ label {
+    left: 0;
+    top: -10px;
+    font-size: 12px;
+  }
+  
+  .btn-div button {
+    outline: none;
+    border: none;
+  
+    margin-top: 3vh;
+  
+    width: 90%;
+    box-sizing: border-box;
+    padding: 10px;
+  
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px #32dbc6;
+    background-color: #49beb7;
+    color: white;
+    font-size: 16px;
+  }
+  
