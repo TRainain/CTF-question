@@ -1,0 +1,9 @@
+version: "3"
+services:
+  challenges:
+    build: .
+    image: qsnctf/base_web_python38
+    ports:
+      - "80:80"
+    environment:
+      - FLAG=wllmctf{66c8112a-eb0b-d1df-b7e3-ca99bd4eacbe}
